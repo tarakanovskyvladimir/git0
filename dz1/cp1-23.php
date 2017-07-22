@@ -27,7 +27,7 @@
 	$bmw = ['model' => 'X5', 'speed'=> 120, 'doors'=> 5, 'year'=>2015 ];
 	$toyota = ['model' => 'Camry', 'speed'=>200, 'doors'=>4, 'year'=>2013 ];
 	$opel = ['model' => 'astra', 'speed'=>180, 'doors'=>5, 'year'=>2017 ];
-	$all_marka = [$bmw, $toyota, $opel];
+	$all_marka = ['bmw' => $bmw, 'toyota' => $toyota, 'opel' => $opel];
 	foreach ($all_marka as $model=>$model_desc){
 	    echo "<p>CAR $model<br>";
 	    foreach ($model_desc as $name=>$value){echo "$value ";}

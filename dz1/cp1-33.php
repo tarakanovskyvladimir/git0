@@ -5,7 +5,7 @@
 	$str_arr = explode(" ", $str); '<p>'.print_r($str_arr).'</p>'; 
 	$c_str = count($str_arr);
 	while ($c_str >= 0) {
-		$rev_str_arr[] = $str_arr[$c_str-1]; $c_str--;}
+		$rev_str_arr = $str_arr[$c_str-1]; $c_str--;}
 	$rev_str = implode(',', $rev_str_arr); echo '<p>'.$rev_str.'</p>';
 	
 	// таблица
