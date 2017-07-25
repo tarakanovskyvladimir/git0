@@ -1,8 +1,9 @@
 <?php 
 require 'functions.php';
-task1();
+$str = ['раз', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь'];
+echo task1($str, true);
 task2();
-task3();
+echo task3('+', 5, 2, 6, 25.8);
 task4();
 task5();
 task6();
