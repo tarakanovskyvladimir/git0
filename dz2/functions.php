@@ -15,8 +15,16 @@ function task1($ar){
 }
 function task2(){}
 function task3($oper, ...$nums){$total_nums = func_get_args(); print_r($total_nums);
-	if (gettype($oper)===string and gettype($nums)===array /*or gettype($nums)===double*/) {
+	if (gettype($oper)===string and ($oper=='+' or $oper=='-' or $oper=='*' or $oper=='/')) {
 		echo "Все верно";
+		foreach ($nums as $num) {
+			if (gettype($num)===integer or gettype($num)===double) {
+			 	return true;
+			 } else {
+			 	# code...
+			 }	  
+		}
+		
 		/*switch ($oper) {
 		 	case '+': foreach ($nums as $num) {
 		 		return $num++;
@@ -36,12 +44,28 @@ function task3($oper, ...$nums){$total_nums = func_get_args(); print_r($total_nu
 		 		break;
 		 } */
 	} else {
-		echo gettype($oper);
+		echo "Введите арифметическое действе: + - * /";
 	}
 	
 	
 }
-function task4(){}
+function task4($cols, $rows){
+	if (gettype($cols)===integer and gettype($rows)===integer) {
+	    echo '<table border="1"><tr>'; 
+	    for ($i=1; $i <= $rows; $i++) { 
+		    for ($j=1; $j <= $cols; $j++) {
+			    if (($i % 2 == 0) and ($j % 2 == 0)) {echo '<td>('.$i*$j.')</td>';}
+			    elseif (($i % 2 == 1) and ($j % 2 == 1)) {echo '<td>['.$i*$j.']</td>';} 
+			    else {echo '<td>'.$i*$j.'</td>';}
+		    }
+		    if ($i != $rows) echo '</tr><tr>';
+	    }
+	    echo '</tr></table>';
+	} else {
+		echo "Множители должны быть целыми числами";
+	}
+	
+}
 function task5(){}
 function task6(){}
 function task7(){}

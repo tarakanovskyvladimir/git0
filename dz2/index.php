@@ -4,7 +4,7 @@ $str = ['раз', 'два', 'три', 'четыре', 'пять', 'шесть', 
 echo task1($str, true);
 task2();
 echo task3('+', 5, 2, 6, 25.8);
-task4();
+task4(6, 6);
 task5();
 task6();
 task7();
