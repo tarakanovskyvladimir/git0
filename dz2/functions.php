@@ -66,8 +66,29 @@ function task4($cols, $rows){
 	}
 	
 }
-function task5(){}
-function task6(){}
+function task5($text){
+	function isPalindrome($w){
+    for($i = 0, $l = strlen($w)-1, $il = ceil($l/2); $i < $il; ++$i)
+        if($w[$i] != $w[$l-$i])
+            return false;
+    return true;
+	}
+
+	preg_match_all('/\b(\w{5})\b/i', $text, $m);
+	for($i = 0, $il = sizeof($m[1]); $i < $il; ++$i)
+	if(isPalindrome($m[0][$i]))
+    	$log_pal = isPalindrome($m[0][$i]);
+    function resPalindrome($log_pal_par){
+    	if ($log_pal_par) {echo "Истина";} 
+    	else {echo "Ложь";}
+    }
+    resPalindrome($log_pal);
+
+}
+function task6(){
+	echo date("d.m.Y H:i:s").'<br/>';
+	echo time();
+}
 function task7(){}
 function task8(){}
 function task9(){}
