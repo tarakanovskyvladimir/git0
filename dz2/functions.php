@@ -107,7 +107,12 @@ function task8(){}
 function task9($name_file){
 	$file = fopen($name_file,"r");
 	$text_sys_file = fread($file, 1000);
+	fclose($file);
 	return $text_sys_file;
 }
-function task10(){}
+function task10(){
+	$anothertest = fopen('anothertest.txt', w);
+	fwrite($anothertest, 'Hello again');
+	fclose($anothertest);
+}
 ?>
