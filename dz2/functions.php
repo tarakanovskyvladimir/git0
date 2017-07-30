@@ -13,40 +13,53 @@ function task1($ar){
 	
 	
 }
-function task2(){}
-function task3($oper, ...$nums){$total_nums = func_get_args(); print_r($total_nums);
-	if (gettype($oper)===string and ($oper=='+' or $oper=='-' or $oper=='*' or $oper=='/')) {
-		echo "Все верно";
-		foreach ($nums as $num) {
-			if (gettype($num)===integer or gettype($num)===double) {
-			 	return true;
-			 } else {
-			 	# code...
-			 }	  
-		}
-		
-		/*switch ($oper) {
-		 	case '+': foreach ($nums as $num) {
-		 		return $num++;
-		 	}; break;
-		 	case '-':foreach ($nums as $num) {
-		 		$num--;
-		 	};; break;
-		 	case '*':foreach ($nums as $num) {
-		 		$num**;
-		 	};; break;
-		 	case '/':foreach ($nums as $num) {
-		 		$num/$num;
-		 	};; break;
-		 	
-		 	default:
-		 		echo "Введите нужные параметры";
-		 		break;
-		 } */
+function task2($nums_ar, $oper_ar){
+	if (gettype($oper_ar)===string and ($oper_ar=='+' or $oper_ar=='-' or $oper_ar=='*' or $oper_ar=='/')) {
+		if (is_array($nums_ar) and !empty($nums_ar) and (count($nums_ar)>1)) {
+			switch ($oper_ar) {
+			 	case '+': $sum_p_ar = 0; foreach ($nums_ar as $num) {$sum_p_ar+= $num;}; 
+			 		return $sum_p_ar; break;
+			 	case '-': $diff_p_ar = 0; foreach ($nums_ar as $num) {$diff_p_ar-= $num;}; 
+			 		return $diff_p_ar; break;
+			 	case '*': $perf_p_ar = 1; foreach ($nums_ar as $num) {$perf_p_ar*=$num;};
+			 		return $perf_p_ar; break;
+			 	case '/': $quot_p_ar = 1; foreach ($nums_ar as $num) {
+			 		if ($num==0) {echo "Замените значение 0 на какое-нибудь другое";} 
+			 		else {$quot_p_ar/=$num;}	
+			 	}; 
+			 		return $quot_p_ar; break;
+			 	default: echo "Введите нужные параметры"; break;
+		 	}
+		} else {
+			echo "Количество чисел дожно быть больше одного";
+		} 
 	} else {
 		echo "Введите арифметическое действе: + - * /";
 	}
-	
+}
+function task3($oper, ...$nums){/*$total_nums = func_get_args(); print_r($total_nums);*/
+	if (gettype($oper)===string and ($oper=='+' or $oper=='-' or $oper=='*' or $oper=='/')) {
+		if (is_array($nums) and !empty($nums) and (count($nums)>1)) {
+			switch ($oper) {
+			 	case '+': $sum_p = 0; foreach ($nums as $num) {$sum_p+= $num;}; 
+			 		return $sum_p; break;
+			 	case '-': $diff_p = 0; foreach ($nums as $num) {$diff_p-= $num;}; 
+			 		return $diff_p; break;
+			 	case '*': $perf_p = 1; foreach ($nums as $num) {$perf_p*=$num;};
+			 		return $perf_p; break;
+			 	case '/': $quot_p = 1; foreach ($nums as $num) {
+			 		if ($num==0) {echo "Замените значение 0 на какое-нибудь другое";} 
+			 		else {$quot_p/=$num;}	
+			 	}; 
+			 		return $quot_p; break;
+			 	default: echo "Введите нужные параметры"; break;
+		 	}
+		} else {
+			echo "Количество чисел дожно быть больше одного";
+		} 
+	} else {
+		echo "Введите арифметическое действе: + - * /";
+	}
 	
 }
 function task4($cols, $rows){
@@ -87,10 +100,14 @@ function task5($text){
 }
 function task6(){
 	echo date("d.m.Y H:i:s").'<br/>';
-	echo time();
+	echo time().'<br/>';
 }
 function task7(){}
 function task8(){}
-function task9(){}
+function task9($name_file){
+	$file = fopen($name_file,"r");
+	$text_sys_file = fread($file, 1000);
+	return $text_sys_file;
+}
 function task10(){}
 ?>
