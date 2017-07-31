@@ -102,7 +102,11 @@ function task6(){
 	echo date("d.m.Y H:i:s").'<br/>';
 	echo time().'<br/>';
 }
-function task7(){}
+function task7($text_repl_1, $text_repl_2){
+	$karl = str_replace('К', '', $text_repl_1);
+	$dva = str_replace('Две', 'Три', $text_repl_2);
+	echo "$karl<br/>$dva<br/>";
+}
 function task8(){}
 function task9($name_file){
 	$file = fopen($name_file,"r");
