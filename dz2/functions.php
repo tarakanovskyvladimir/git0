@@ -14,7 +14,7 @@ function task1($ar){
 	
 }
 function task2($nums_ar, $oper_ar){
-	if (gettype($oper_ar)===string and ($oper_ar=='+' or $oper_ar=='-' or $oper_ar=='*' or $oper_ar=='/')) {
+	if (gettype($oper_ar)==string and ($oper_ar=='+' or $oper_ar=='-' or $oper_ar=='*' or $oper_ar=='/')) {
 		if (is_array($nums_ar) and !empty($nums_ar) and (count($nums_ar)>1)) {
 			switch ($oper_ar) {
 			 	case '+': $sum_p_ar = 0; foreach ($nums_ar as $num) {$sum_p_ar+= $num;}; 
@@ -38,7 +38,7 @@ function task2($nums_ar, $oper_ar){
 	}
 }
 function task3($oper, ...$nums){/*$total_nums = func_get_args(); print_r($total_nums);*/
-	if (gettype($oper)===string and ($oper=='+' or $oper=='-' or $oper=='*' or $oper=='/')) {
+	if (gettype($oper)==string and ($oper=='+' or $oper=='-' or $oper=='*' or $oper=='/')) {
 		if (is_array($nums) and !empty($nums) and (count($nums)>1)) {
 			switch ($oper) {
 			 	case '+': $sum_p = 0; foreach ($nums as $num) {$sum_p+= $num;}; 
@@ -80,22 +80,18 @@ function task4($cols, $rows){
 	
 }
 function task5($text){
-	function isPalindrome($w){
-    for($i = 0, $l = strlen($w)-1, $il = ceil($l/2); $i < $il; ++$i)
-        if($w[$i] != $w[$l-$i])
-            return false;
-    return true;
+	function str_pal($text1){
+		$text1 = str_replace(" ","", $text1);
+		$text1 = mb_strtolower($text1, 'UTF-8');
+		$arr = preg_split('//u',$text,-1,PREG_SPLIT_NO_EMPTY);
+		$arr1 = array_reverse($arr);
+		return ($arr == $arr1) ? true : false;
 	}
-
-	preg_match_all('/\b(\w{5})\b/i', $text, $m);
-	for($i = 0, $il = sizeof($m[1]); $i < $il; ++$i)
-	if(isPalindrome($m[0][$i]))
-    	$log_pal = isPalindrome($m[0][$i]);
-    function resPalindrome($log_pal_par){
-    	if ($log_pal_par) {echo "Истина";} 
-    	else {echo "Ложь";}
+	function resPalindrome($log_pal_par){
+    	if ($log_pal_par) {echo "Истина<br>";} 
+    	else {echo "Ложь<br>";}
     }
-    resPalindrome($log_pal);
+    resPalindrome(str_pal($text));
 
 }
 function task6(){
@@ -107,7 +103,34 @@ function task7($text_repl_1, $text_repl_2){
 	$dva = str_replace('Две', 'Три', $text_repl_2);
 	echo "$karl<br/>$dva<br/>";
 }
-function task8(){}
+function task8($try_str){
+	function smile(){ echo "<pre>";
+	    echo "                     OOOOOOOOOOO
+	         OOOOOOOOOOOOOOOOOOO
+	      OOOOOO00OOOOOOOOO00OOOOOO
+	    OOOOO0     0OOOOO0     OOOOOO
+	  OOOOO     #    OOO    #     OOOOO
+	 OOOOOOOOO     OOOOOOO     OOOOOOOOO
+	OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+	OOOOOOOOOOOOOOOOO  OOOOOOOOOOOOOOOOOO
+	OOOO  OOOOOOOOO      OOOOOOOOOOO  OO0
+	 OOOO  OOOOOOOOOOOOOOOOOOOOOOO  OOOO
+	  OOOO   OOOOOOOOOOOOOOOOOOOO  OOOO
+	   0OOOOO  0OOOOOOOOOOOOOOO   OOOO
+	    0OOOO00  OOOOOOOOO0000  OOOOO
+	     OOOOOO00 I'm Petya  OOOOOO0
+	       0OOOOOOOOOO000000000000";
+	echo "</pre>";}
+	function try_rx($try_str1){
+		if (preg_match("/(:\))/", $try_str1)) {smile();} 
+	    else {
+	        preg_match_all("/RX packets:([0-9]+)/", $try_str1, $ok);
+	        if ((int)$ok[1][0] > 1000) { echo "Сеть есть<br>";}
+	        else{echo "У вас неполадки с сетью. Проверьте соединение или обратитесь к провайдеру<br>";}
+	    }
+	}
+	return try_rx($try_str);
+}
 function task9($name_file){
 	$file = fopen($name_file,"r");
 	$text_sys_file = fread($file, 1000);
