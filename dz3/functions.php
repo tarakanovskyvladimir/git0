@@ -28,9 +28,22 @@ function task2($car){
 	echo $outputjson_read;
 }
 function task3(){
-	
+	$prog_array = []; $array_csv = './rand.csv';
+	for ($i=0; $i < 50; $i++) { $rand_item = rand(0, 100); $prog_array[] = $rand_item; }
+	$fh = fopen($array_csv,'w') or die("Can't open $filename");
+	if (fputcsv($fh, $prog_array) === false) {die("Can't write CSV line");}
+	fclose($fh) or die("Can't close $filename");
+
 }
-function task4(){
-	
+function task4($url_curl){
+	if( $curl = curl_init() ) {
+    curl_setopt($curl,CURLOPT_URL,$url_curl);
+    curl_setopt($curl,CURLOPT_RETURNTRANSFER,true);
+    $out = json_decode(curl_exec($curl), true);
+    $curl_title_page = $out["query"]["pages"][15580374]["title"];
+    $curl_title_id = $out["query"]["pages"][15580374]["pageid"];
+    echo "Title страницы - $curl_title_page, id страницы - $curl_title_id.";
+    curl_close($curl);
+  }
 }
 ?>
