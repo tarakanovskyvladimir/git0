@@ -20,9 +20,9 @@ function task1($file_name_xml){
 }
 function task2($car){
 	$car_json = json_encode($car);
-	$outputjson = fopen('output.json', w);
+	$outputjson = fopen('output.json', 'w');
 	fwrite($outputjson, $car_json); fclose($outputjson);
-	$outputjson_open = fopen($outputjson,"r");
+	$outputjson_open = fopen($outputjson,'r'); 
 	$outputjson_read = fread($outputjson_open, 1000);
 	fclose($outputjson_open);
 	echo $outputjson_read;
@@ -40,7 +40,7 @@ function task3(){
 	foreach ($rand_array as $key => $rand_aritem) {
 		if ($rand_aritem%2==0) {$sumr_array+=$rand_aritem;}
 	}
-	echo "Сумма случайных четных чисел равна $sumr_array";
+	echo "Сумма случайных четных чисел равна $sumr_array"; 
 
 }
 function task4($url_curl){
