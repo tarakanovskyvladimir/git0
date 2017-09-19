@@ -22,10 +22,17 @@ function task2($car){
 	$car_json = json_encode($car);
 	$outputjson = fopen('output.json', 'w');
 	fwrite($outputjson, $car_json); fclose($outputjson);
-	$outputjson_open = fopen($outputjson,'r'); 
-	$outputjson_read = fread($outputjson_open, 1000);
-	fclose($outputjson_open);
-	echo $outputjson_read;
+	$outputjson_open = file_get_contents('output.json');
+	$arr_outputjson = json_decode($outputjson_open, true);
+	$arr_outputjson_merge = array_merge($arr_outputjson, array('ghiguli' => array(1978, 1991)));
+	$car_json1 = json_encode($arr_outputjson_merge);
+	$outputjson1 = fopen('output1.json', 'w');
+	fwrite($outputjson1, $car_json1); fclose($outputjson1);
+	$outputadd_open = file_get_contents('output1.json');
+	$arr_outputadd = json_decode($outputadd_open, true);
+	$arr_differ = array_diff($arr_outputjson, $arr_outputadd);
+
+	var_dump($arr_outputjson); var_dump($arr_outputadd); var_dump($arr_differ);
 }
 function task3(){
 	$prog_array = []; $array_csv = './rand.csv';
