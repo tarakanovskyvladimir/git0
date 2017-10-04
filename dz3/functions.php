@@ -30,10 +30,8 @@ function task2($car){
 	fwrite($outputjson1, $car_json1); fclose($outputjson1);
 	$outputadd_open = file_get_contents('output1.json');
 	$arr_outputadd = json_decode($outputadd_open, true);
-	$arr_differ = array_diff($arr_outputjson, $arr_outputadd);
-	$arr_differ1 = array_diff($arr_outputadd, $arr_outputjson);
-
-	var_dump($arr_outputjson, $arr_outputadd, $arr_differ, $arr_differ1);
+	$arr_differ1 = array_diff_assoc($arr_outputadd, $arr_outputjson);
+	var_dump($arr_differ1);
 }
 function task3(){
 	$prog_array = []; $array_csv = './rand.csv';

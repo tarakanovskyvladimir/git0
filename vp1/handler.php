@@ -25,7 +25,10 @@ try {
         $part = $_POST["part"]; $appt = $_POST["appt"]; $floor = $_POST["floor"];
         $payment = $_POST["payment"]; $callback = $_POST["callback"];
         }
-    $stmt->execute(); echo "New records created successfully";
+    $stmt->execute(); $stmt_detail->execute(); 
+    $n_order = $user_conn->prepare("SELECT id FROM users WHERE email = :email");
+    $n_order->bindParam(':email', $email); if ($_POST["submit"]) {$email = $_POST["email"];}
+    $n_order->execute(); echo "New records created successfully"; print_r($n_order);
     }
 catch(PDOException $e){ echo "Error: " . $e->getMessage(); }
 $user_conn = null;
